@@ -1,16 +1,16 @@
-﻿
-// ==UserScript==
-// @name         WME Yandex Layer
-// @namespace    https://greasyfork.org/ru/scripts/10760-wme-yandex-layer
-// @version      0.11
-// @description  Добавление слоя с Yandex картами
+﻿// ==UserScript==
+// @name         WME Yandex Layer mod uranik
+// @namespace    https://github.com/uranik777/waze-yandex-layer-mod
+// @version      0.111
+// @description  Добавление слоя с Yandex картами с автозагрузкой слоя в редакторе
 // @author       ixxvivxxi
-// @include      https://www.waze.com/editor/*
-// @include      https://www.waze.com/*/editor/*
-// @include      https://editor-beta.waze.com/editor/*
-// @include      https://editor-beta.waze.com/*/editor/*
-// @match        https://www.waze.com/ru/editor/
+// @include      https://www.waze.com/editor*
+// @include      https://www.waze.com/*/editor*
+// @include      https://editor-beta.waze.com/editor*
+// @include      https://editor-beta.waze.com/*/editor*
+// @match        https://www.waze.com/ru/editor
 // @grant        none
+// @updateURL    https://raw.githubusercontent.com/uranik777/waze-yandex-layer-mod/master/waze-yandex-layer-mod.user.js
 // ==/UserScript==
 
 (function()
@@ -336,6 +336,9 @@
         $.getScript( "https://api-maps.yandex.ru/1.1/_YMaps.js?v=1.1.21-43" )  
         .done(function( script, textStatus ) {
           startYa();
+            if($("#layer-switcher-item_yandex_map").is(":not(:checked)") ) { 
+                $("#layer-switcher-item_yandex_map").click();
+            }
         });
       });
     });
