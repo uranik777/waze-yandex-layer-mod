@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name         WME Yandex Layer mod uranik
 // @namespace    https://github.com/uranik777/waze-yandex-layer-mod
-// @version      0.111
+// @version      0.112
 // @description  Добавление слоя с Yandex картами с автозагрузкой слоя в редакторе
 // @author       ixxvivxxi
 // @include      https://www.waze.com/editor*
@@ -283,6 +283,10 @@
 //               WM.getLayer(googleMapId).setVisibility(false);
           } else {
               WM.getLayer(yandexMapLayer.id).setVisibility(false);
+              if($("#layer-switcher-item_satellite_imagery").is(":not(:checked)") ) { 
+                  $("#layer-switcher-item_satellite_imagery").click();
+                  WM.getLayer(googleMapId).setVisibility(true);
+              }
           }
       });
       
@@ -300,6 +304,7 @@
           if ($(this)[0].checked) {
               buttonContainer.find('#layer-switcher-item_yandex_map')[0].checked = false;
               buttonContainer.find('#layer-switcher-item_yandex_satellite')[0].checked = false;
+              WM.getLayer(googleMapId).setVisibility(true);
           }
       });
       
